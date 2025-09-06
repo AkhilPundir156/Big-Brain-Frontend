@@ -1,0 +1,53 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root{
+
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+
+    --primary-text-color: rgb(255, 255, 255);
+    --secondary-text-color: rgb(247, 247, 247);
+    --tertiary-text-color: #C0c0c0;
+    --primary-main-color:rgb(255,255,255);
+  
+    --primary-bg-color: rgb(33, 33, 33);
+    --secondary-bg-color: rgb(56, 56, 56);
+    --primary-bg-constant: rgb(66,66,66);
+    --first-bg-color: #161616;
+    --tertiary-bg-color: rgb(55, 55, 55);
+    --input-bg-color:rgb(43,43,43);
+    
+    --primary-dot-color: rgb(97, 97, 97);
+    --input-border-color: rgb(44,44,44);
+    
+    --primary-border-color: rgb(44, 44, 44);
+    --secondary-border-color: rgb(55, 55, 55);
+    --tertiary-border-color: rgb(66,66,66);
+
+    --green-text-color:rgb(3,151,84,.7);
+    --green-bg-bolor: rgb(40,199,128,.2);
+    
+    .light {
+      --primary-main-color:rgb(0,0,0);
+      --primary-text-color: rgb(255, 255, 255);
+      --secondary-text-color: rgb(22, 22, 22);
+      --tertiary-text-color: rgb(66, 66, 66);
+      /* 102,102,102 */
+      --primary-bg-constant: rgb(66,66,66);
+      
+      --primary-bg-color: white;
+      --secondary-bg-color: rgb(0, 0, 0);
+      --tertiary-bg-color: rgb(255, 255, 255);
+      --first-bg-color: rgb(240, 240, 240);
+    
+      --primary-dot-color: rgb(204, 204, 204);
+    
+      --primary-border-color: rgb(230, 230, 230);
+      --secondary-border-color: rgb(200, 200, 200);
+      --tertiary-border-color: rgb(240,240,240);
+      --input-bg-color:rgb(255,255,255);
+  }
+}
