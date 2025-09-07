@@ -1,7 +1,8 @@
-import { useRef, useState } from "react";
 import axios from "axios";
-import { InputElement } from "../ui/InputElement";
-import { Button } from "../ui/ButtonElement";
+import { useRef, useState } from "react";
+
+import { Button } from "../../ui/ButtonElement";
+import { InputElement } from "../../ui/InputElement";
 
 const CreateBrainItem = () => {
     const SERVER_URL = import.meta.env.VITE_API_URL;

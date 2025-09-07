@@ -10,7 +10,7 @@ import { UserICon } from "../assets/icons/UserIcon";
 
 import { Button } from "../ui/ButtonElement";
 
-import UserDropDown from "./UserDropDown";
+import UserDropDown from "./UserComponent/UserDropDown";
 
 const Navbar = () => {
     const navigation = useNavigate();

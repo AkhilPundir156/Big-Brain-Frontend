@@ -1,17 +1,20 @@
 import { useRef, useState } from "react";
-import { InputElement } from "../ui/InputElement";
-import { Button } from "../ui/ButtonElement";
-import { BrainIcon } from "../assets/icons/BrainIcon";
-import { RootState } from "../store";
 import { useSelector } from "react-redux";
-import EmailIcon from "../assets/icons/EmailIcon";
-import LockIcon from "../assets/icons/LockIcon";
-import EyeIcon from "../assets/icons/Showpassword";
-import EyeIconOff from "../assets/icons/Hidepassword";
-import { UserICon } from "../assets/icons/UserIcon";
-import { useNavigate } from "react-router-dom";
-import { Link } from "react-router-dom";
-import userService from "../utils/userService";
+import { useNavigate, Link } from "react-router-dom";
+
+import { RootState } from "../../store";
+
+import userService from "../../utils/userService";
+
+import { InputElement } from "../../ui/InputElement";
+import { Button } from "../../ui/ButtonElement";
+
+import { BrainIcon } from "../../assets/icons/BrainIcon";
+import { UserICon } from "../../assets/icons/UserIcon";
+import EmailIcon from "../../assets/icons/EmailIcon";
+import LockIcon from "../../assets/icons/LockIcon";
+import EyeIcon from "../../assets/icons/Showpassword";
+import EyeIconOff from "../../assets/icons/Hidepassword";
 
 const Signup = () => {
 

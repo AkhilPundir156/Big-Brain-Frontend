@@ -1,16 +1,17 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
-import { RootState, AppDispatch } from "../store";
-import { setTheme, setUserIconClicked } from "../slices/uiSlice";
-import { clearUser } from "../slices/userSlice";
+import { RootState, AppDispatch } from "../../store";
+import { setTheme, setUserIconClicked } from "../../slices/uiSlice";
+import { clearUser } from "../../slices/userSlice";
 
-import { MoonIcon } from "../assets/icons/MoonIcon";
-import { LightIcon } from "../assets/icons/LightIcon";
-import { UserICon } from "../assets/icons/UserIcon";
-import { ChevronRight } from "../assets/icons/ChevronRight";
-import { ArrowLink } from "../assets/icons/ArrowLink";
-import userService from "../utils/userService";
+import userService from "../../utils/userService";
+
+import { MoonIcon } from "../../assets/icons/MoonIcon";
+import { LightIcon } from "../../assets/icons/LightIcon";
+import { UserICon } from "../../assets/icons/UserIcon";
+import { ChevronRight } from "../../assets/icons/ChevronRight";
+import { ArrowLink } from "../../assets/icons/ArrowLink";
 
 const UserDropDown = () => {
     const navigation = useNavigate();

@@ -1,21 +1,25 @@
+import type React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
 
-import type React from "react";
-
 import Layout from "./components/Layout";
+
+import Createbrain from "./components/BrainComponent/CreatebrainItem";
+import Mybrain from "./components/BrainComponent/Mybrain";
+import BrainItem from "./components/BrainComponent/BrainItem";
+import Sharedbrain from "./components/BrainComponent/Sharedbrain";
+
+import Login from "./components/UserComponent/Login";
+import Singup from "./components/UserComponent/Singup";
+import Myprofile from "./components/UserComponent/Myprofile";
+
+import Aboutdev from "./components/UiDetailedComponent/Aboutdev";
+import About from "./components/UiDetailedComponent/Aboutus";
+import Usage from "./components/UiDetailedComponent/Usage";
+import Contact from "./components/UiDetailedComponent/Contactus";
+
 import Home from "./components/Home";
-import Login from "./components/Login";
-import Singup from "./components/Singup";
-import Createbrain from "./components/CreatebrainItem";
-import Myprofile from "./components/Myprofile";
-import Aboutdev from "./components/Aboutdev";
-import About from "./components/Aboutus";
-import Usage from "./components/Usage";
-import Contact from "./components/Contactus";
-import Mybrain from "./components/Mybrain";
-import BrainItem from "./components/BrainItem";
-import Sharedbrain from "./components/Sharedbrain";
+
 
 function App(): React.ReactElement {
     return (

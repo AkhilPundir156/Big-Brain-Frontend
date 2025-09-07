@@ -1,21 +1,21 @@
 import { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate, Link } from "react-router-dom";
 
-import { RootState, AppDispatch } from "../store";
-import { setUser } from "../slices/userSlice";
-import { setNavbarItem } from "../slices/uiSlice";
+import { RootState, AppDispatch } from "../../store";
+import { setNavbarItem } from "../../slices/uiSlice";
+import { setUser } from "../../slices/userSlice";
 
-import { InputElement } from "../ui/InputElement";
-import { Button } from "../ui/ButtonElement";
-import { BrainIcon } from "../assets/icons/BrainIcon";
-import EmailIcon from "../assets/icons/EmailIcon";
-import LockIcon from "../assets/icons/LockIcon";
-import EyeIcon from "../assets/icons/Showpassword";
-import EyeIconOff from "../assets/icons/Hidepassword";
-import { useNavigate } from "react-router-dom";
-import { Link } from "react-router-dom";
-import { googleAuth } from "../utils/googleAuth";
-import userService from "../utils/userService";
+import { Button } from "../../ui/ButtonElement";
+import { BrainIcon } from "../../assets/icons/BrainIcon";
+import EmailIcon from "../../assets/icons/EmailIcon";
+import EyeIconOff from "../../assets/icons/Hidepassword";
+import { InputElement } from "../../ui/InputElement";
+import LockIcon from "../../assets/icons/LockIcon";
+import EyeIcon from "../../assets/icons/Showpassword";
+
+import { googleAuth } from "../../utils/googleAuth";
+import userService from "../../utils/userService";
 
 const Login = () => {
     const dispatch = useDispatch<AppDispatch>();

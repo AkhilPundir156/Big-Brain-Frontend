@@ -12,15 +12,13 @@ import {
     ResponsiveContainer,
 } from "recharts";
 
-// 🏪 State
-import { AppDispatch, store } from "../store";
-import { setNavbarItem } from "../slices/uiSlice";
+import { AppDispatch, store } from "../../store";
+import { setNavbarItem } from "../../slices/uiSlice";
 
-// 🎨 UI
-import { Button } from "../ui/ButtonElement";
+import { Button } from "../../ui/ButtonElement";
 import EditProfile from "./EditProfile";
-import userService from "../utils/userService";
-import { clearUser } from "../slices/userSlice";
+import userService from "../../utils/userService";
+import { clearUser } from "../../slices/userSlice";
 
 interface UserResponse {
     user: {

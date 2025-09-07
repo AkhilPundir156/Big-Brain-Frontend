@@ -2,14 +2,14 @@ import { useEffect, useRef, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
-import { AppDispatch, RootState } from "../store";
-import { setActiveItem } from "../slices/contentSlice";
+import { AppDispatch, RootState } from "../../store";
+import { setActiveItem } from "../../slices/contentSlice";
 
-import BrainService from "../utils/brainService";
+import BrainService from "../../utils/brainService";
 
-import { InputElement } from "../ui/InputElement";
-import { Button } from "../ui/ButtonElement";
-import Loader from "../ui/Loader";
+import { Button } from "../../ui/ButtonElement";
+import { InputElement } from "../../ui/InputElement";
+import Loader from "../../ui/Loader";
 
 const BrainItem = () => {
     const params = useParams();
