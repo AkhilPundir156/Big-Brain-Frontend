@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 
-import BrainService from "../utils/brainService";
+import BrainService from "../../utils/brainService";
 
 const Sharedbrain = () => {
     const params = useParams();

@@ -1,10 +1,12 @@
-import { useEffect, useRef, useState } from "react";
-import { Button } from "../ui/ButtonElement";
-import DialogModal from "../ui/DialogModal";
-import { InputElement } from "../ui/InputElement";
 import axios from "axios";
+import { useRef } from "react";
 import { useSelector } from "react-redux";
-import { RootState } from "../store";
+
+import { RootState } from "../../store";
+
+import { Button } from "../../ui/ButtonElement";
+import DialogModal from "../../ui/DialogModal";
+import { InputElement } from "../../ui/InputElement";
 
 const EditProfile = () => {
     const SERVER_URL = import.meta.env.VITE_API_URL;

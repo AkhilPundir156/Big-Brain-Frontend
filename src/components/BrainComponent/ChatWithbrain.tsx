@@ -1,8 +1,9 @@
 import { useRef, useState, useEffect } from "react";
 
-import { Button } from "../ui/ButtonElement";
-import { InputElement } from "../ui/InputElement";
-import BrainService from "../utils/brainService";
+import BrainService from "../../utils/brainService";
+
+import { Button } from "../../ui/ButtonElement";
+import { InputElement } from "../../ui/InputElement";
 
 interface Message {
     sender: "user" | "brain";

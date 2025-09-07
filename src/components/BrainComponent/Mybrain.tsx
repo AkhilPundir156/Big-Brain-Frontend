@@ -1,23 +1,21 @@
-// 📦 Libraries
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
-// 🏪 State
-import { RootState, AppDispatch } from "../store";
+import { RootState, AppDispatch } from "../../store";
 import {
     setActiveItem,
     setContents,
     removeContent,
-} from "../slices/contentSlice";
-import { setNavbarItem } from "../slices/uiSlice";
+} from "../../slices/contentSlice";
+import { setNavbarItem } from "../../slices/uiSlice";
 
-// 🎨 UI Components
-import DialogModal from "../ui/DialogModal";
-import { Button } from "../ui/ButtonElement";
+import BrainService from "../../utils/brainService";
+
+import DialogModal from "../../ui/DialogModal";
+import { Button } from "../../ui/ButtonElement";
 import ChatWithBrain from "./ChatWithbrain";
 import CreateBrainItem from "./CreatebrainItem";
-import BrainService from "../utils/brainService";
 
 const MyBrain = () => {
     const navigate = useNavigate();

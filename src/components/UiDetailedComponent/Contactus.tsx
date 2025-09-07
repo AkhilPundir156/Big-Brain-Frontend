@@ -1,6 +1,7 @@
 import { useRef } from "react";
-import { InputElement } from "../ui/InputElement";
-import { Button } from "../ui/ButtonElement";
+
+import { Button } from "../../ui/ButtonElement";
+import { InputElement } from "../../ui/InputElement";
 
 const Contact = () => {
     const inputEmailRef = useRef<HTMLInputElement>(null);
