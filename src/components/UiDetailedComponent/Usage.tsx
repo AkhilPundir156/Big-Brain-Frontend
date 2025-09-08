@@ -12,7 +12,7 @@ const Usage = () => {
     const dispatch = useDispatch<AppDispatch>();
 
     useEffect(() => {
-        dispatch(setNavbarItem("how-to-use"));
+        dispatch(setNavbarItem("usage"));
         return () => {
             dispatch(setNavbarItem(null));
         };
