@@ -33,7 +33,7 @@ const Home = () => {
                     {/* Home Page Text Content */}
                     <h2 className="text-[2.6rem] font-bold leading-snug">
                         Meet Your{" "}
-                        <span className="text-primary-text">
+                        <span className="text-green-text">
                             Smartest Brain Ever
                         </span>{" "}
                         !!!
