@@ -7,12 +7,8 @@ import { setIsLoading } from "../slices/uiSlice";
 
 interface AuthenticatedRequestConfig extends AxiosRequestConfig {
     authRequired?: boolean;
+    externalApi?: boolean;
 }
-
-const api = axios.create({
-    baseURL: import.meta.env.VITE_API_URL,
-    withCredentials: true,
-});
 
 class ApiService {
     static async request<T>(
@@ -26,19 +22,29 @@ class ApiService {
                 if (!isAuthenticated) {
                     toast.error("You must be logged in to perform this action");
                     const navigation = useNavigate();
-                    navigation('/login');
+                    navigation("/login");
                     return null;
                 }
             }
 
             store.dispatch(setIsLoading(true));
 
+            let api = null;
+            if (config.externalApi) {
+                api = axios.create();
+            } else {
+                api = axios.create({
+                    baseURL: import.meta.env.VITE_API_URL,
+                    withCredentials: true,
+                });
+            }
+
             const response = await api.request<T>(config);
 
             if ((response.data as any)?.msg) {
                 toast.success((response.data as any).msg);
                 //@ts-ignore
-                console.log(response.data?.msg)
+                console.log(response.data?.msg);
             }
 
             return response.data;
