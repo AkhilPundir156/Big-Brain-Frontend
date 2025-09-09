@@ -12,7 +12,7 @@ interface UIState {
 }
 
 const initialState: UIState = {
-    theme: "light",
+    theme: "dark",
     modal: null,
     navbarItem:null,
     notification: null,
