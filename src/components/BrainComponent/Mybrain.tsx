@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
@@ -12,37 +12,44 @@ import { setNavbarItem } from "../../slices/uiSlice";
 
 import BrainService from "../../utils/brainService";
 
-import DialogModal from "../../ui/DialogModal";
-import { Button } from "../../ui/ButtonElement";
 import ChatWithBrain from "./ChatWithbrain";
 import CreateBrainItem from "./CreatebrainItem";
+import { Button } from "../../ui/ButtonElement";
+import DialogModal from "../../ui/DialogModal";
+import Loader from "../../ui/Loader";
 
 const MyBrain = () => {
     const navigate = useNavigate();
     const dispatch = useDispatch<AppDispatch>();
 
-    const isAuthenticated = useSelector(
-        (state: RootState) => state.user.isAuthenticated
-    );
     const brainItems = useSelector((state: RootState) => state.content.items);
 
+    const [isLoading, setIsLoading] = useState<boolean>(false);
     useEffect(() => {
+        console.log("inside the my brain");
         dispatch(setNavbarItem("brain"));
         fetchBrainItems();
-    }, [isAuthenticated]);
+        return () => {
+            dispatch(setNavbarItem(null));
+        };
+    }, []);
 
     const fetchBrainItems = async () => {
+        setIsLoading(true);
         const response: any = await BrainService.getMyBrains();
         if (response && response.success) {
             dispatch(setContents(response.data));
         }
+        setIsLoading(false);
     };
 
     const handleShareBrain = async () => {
+        setIsLoading(true);
         const response = await BrainService.shareBrain();
         if (response.success) {
             await navigator.clipboard.writeText(response.data.url);
         }
+        setIsLoading(false);
     };
 
     const handleSelectBrain = (item: any) => {
@@ -55,11 +62,16 @@ const MyBrain = () => {
             navigate("/my-brain");
             return;
         }
+        setIsLoading(true);
         const response = await BrainService.deleteBrain(brainItem._id);
         if (response.success) {
             dispatch(removeContent(brainItem._id));
         }
+        setIsLoading(false);
     };
+    if (isLoading) {
+        return <Loader />;
+    }
 
     return (
         <div className="p-6 pt-14 w-full">

@@ -1,71 +1,50 @@
-// 📦 Libraries
 import { useEffect, useState } from "react";
 import { Outlet, useLocation, useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import axios from "axios";
+import { useDispatch, useSelector } from "react-redux";
 
-// 🏪 State
-import { AppDispatch } from "../store";
+import userService from "../utils/userService";
+
+import { AppDispatch, RootState } from "../store";
 import { clearUser, setUser } from "../slices/userSlice";
 
-// 🎨 Components & Assets
-import Navbar from "./Navbar";
 import { BrainIcon } from "../assets/icons/BrainIcon";
+import Navbar from "./Navbar";
+import Loader from "../ui/Loader";
 
 const Layout = () => {
     const dispatch = useDispatch<AppDispatch>();
+    const [isCheckingSession, setCheckingSession] = useState<boolean>(true);
     const navigate = useNavigate();
     const location = useLocation();
 
-    const [checkingSession, setCheckingSession] = useState(true);
-    const SERVER_URL = import.meta.env.VITE_API_URL;
-
     useEffect(() => {
-        const checkSession = async () => {
-            try {
-                const { status, data } = await axios.get(
-                    `${SERVER_URL}/user/me`,
-                    { withCredentials: true }
-                );
-    
-                if (status === 200 && data?.user) {
-                    const user = data.user;
-                    dispatch(
-                        setUser({
-                            _id: user._id || null,
-                            name: user.name || "",
-                            email: user.email || "",
-                            profilePic: user.avatar_url || "",
-                            isAuthenticated: true,
-                        })
-                    );
-    
-                    if (location.pathname === "/login") {
-                        navigate("/my-brain");
-                    }
-                } else {
-                    dispatch(clearUser());
-                    navigate("/login");
-                }
-            } catch (error) {
-                console.error("Session check failed:", error);
-                dispatch(clearUser());
-                navigate("/login");
-            } finally {
-                setCheckingSession(false);
-            }
-        };
-    
         checkSession();
     }, []);
-    
 
-    if (checkingSession) {
-        return (
-            <div className="flex items-center justify-center h-screen">
-                <p className="text-lg">Checking session...</p>
-            </div>
+    const checkSession = async () => {
+        const response: any = await userService.getMyProfile();
+        const user = response?.user;
+        setCheckingSession(false);
+        if (!response || !user) {
+            dispatch(clearUser());
+            navigate("/login");
+            return;
+        }
+        dispatch(
+            setUser({
+                _id: user._id || null,
+                name: user.name || "",
+                email: user.email || "",
+                profilePic: user.avatar_url || "",
+                isAuthenticated: true,
+            })
         );
+        if (user && location.pathname === "/login") {
+            navigate("/my-brain");
+        }
+    };
+    if (isCheckingSession) {
+        return <Loader />;
     }
 
     return (

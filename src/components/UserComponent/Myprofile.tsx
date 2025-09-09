@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import {
@@ -12,13 +12,14 @@ import {
     ResponsiveContainer,
 } from "recharts";
 
-import { AppDispatch, store } from "../../store";
+import { AppDispatch, RootState, store } from "../../store";
 import { setNavbarItem } from "../../slices/uiSlice";
 
 import { Button } from "../../ui/ButtonElement";
 import EditProfile from "./EditProfile";
 import userService from "../../utils/userService";
 import { clearUser } from "../../slices/userSlice";
+import Loader from "../../ui/Loader";
 
 interface UserResponse {
     user: {
@@ -32,10 +33,10 @@ interface UserResponse {
 const Myprofile = () => {
     const navigate = useNavigate();
     const dispatch = useDispatch<AppDispatch>();
+    const uiTheme = useSelector((state: RootState) => state.ui);
 
     const [user, setUser] = useState<any>(null);
 
-    // dummy stats (replace with backend later)
     const stats = {
         totalBrainItems: 12,
         totalQueries: 47,
@@ -59,7 +60,6 @@ const Myprofile = () => {
         try {
             const response: any = await userService.getMyProfile();
             const user = response?.user;
-
             if (user) {
                 setUser({
                     _id: user._id,
@@ -84,12 +84,8 @@ const Myprofile = () => {
         }
     };
 
-    if (!user) {
-        return (
-            <div className="flex justify-center items-center h-full text-secondary-text">
-                Loading profile...
-            </div>
-        );
+    if (uiTheme.isLoading || !user) {
+        return <Loader />;
     }
 
     return (

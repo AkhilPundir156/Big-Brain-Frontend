@@ -18,6 +18,7 @@ const BrainItem = () => {
     const activeBrain = useSelector(
         (state: RootState) => state.content.activeItem
     );
+    const uiTheme = useSelector((state: RootState) => state.ui);
 
     const [isEditing, setIsEditing] = useState(false);
     const [formData, setFormData] = useState<any>(null);
@@ -65,7 +66,7 @@ const BrainItem = () => {
         setIsEditing(false);
     };
 
-    if (!activeBrain || !formData) {
+    if (uiTheme.isLoading || !activeBrain || !formData) {
         return <Loader />;
     }
 

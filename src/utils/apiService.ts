@@ -21,12 +21,9 @@ class ApiService {
 
                 if (!isAuthenticated) {
                     toast.error("You must be logged in to perform this action");
-                    const navigation = useNavigate();
-                    navigation("/login");
                     return null;
                 }
             }
-
             store.dispatch(setIsLoading(true));
 
             let api = null;

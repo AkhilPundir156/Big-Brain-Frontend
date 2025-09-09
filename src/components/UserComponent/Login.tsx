@@ -27,7 +27,6 @@ const Login = () => {
     const inputEmailRef = useRef<HTMLInputElement>(null);
     const inputPasswordRef = useRef<HTMLInputElement>(null);
 
-
     useEffect(() => {
         dispatch(setNavbarItem(null));
     }, []);

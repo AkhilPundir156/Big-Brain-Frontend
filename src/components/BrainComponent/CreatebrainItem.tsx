@@ -3,6 +3,9 @@ import { useRef, useState } from "react";
 
 import { Button } from "../../ui/ButtonElement";
 import { InputElement } from "../../ui/InputElement";
+import { useSelector } from "react-redux";
+import { RootState } from "../../store";
+import Loader from "../../ui/Loader";
 
 const CreateBrainItem = () => {
     const SERVER_URL = import.meta.env.VITE_API_URL;
@@ -20,7 +23,6 @@ const CreateBrainItem = () => {
         const title = titleRef.current?.value.trim() || "";
         const description = descRef.current?.value.trim() || "";
         const tags = tagsRef.current?.value.trim()?.split(",") || "";
-        debugger;
 
         if (!title || !description) return;
 
@@ -55,6 +57,12 @@ const CreateBrainItem = () => {
             setIsSubmitting(false);
         }
     };
+
+    const uiTheme = useSelector((state: RootState) => state.ui);
+
+    if (uiTheme.isLoading || isSubmitting) {
+        return <Loader />;
+    }
 
     return (
         <div className="flex flex-col gap-5 w-[650px] max-w-full p-6 bg-first-bg border border-secondary-border rounded-2xl shadow-xl">
