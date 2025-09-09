@@ -18,10 +18,13 @@ const Navbar = () => {
 
     const theme = useSelector((state: RootState) => state.ui.theme);
     const navBarIcon = useSelector((state: RootState) => state.ui.navbarItem);
-    const isUserIconClicked = useSelector((state: RootState) => state.ui.userIconClicked)
-    const isUserActive = useSelector((state: RootState) => state.user.isAuthenticated);
-    const avatar_url = useSelector((state: RootState) => state.user.profilePic)
-
+    const isUserIconClicked = useSelector(
+        (state: RootState) => state.ui.userIconClicked
+    );
+    const isUserActive = useSelector(
+        (state: RootState) => state.user.isAuthenticated
+    );
+    const avatar_url = useSelector((state: RootState) => state.user.profilePic);
 
     useEffect(() => {
         if (theme === "dark") {
@@ -46,20 +49,20 @@ const Navbar = () => {
                         Home
                     </div>
                 </Link>
-                {isUserActive && 
-                <Link to={"/my-brain"}>
-                <div
-                    className={`cursor-pointer w-[80px] h-[40px] flex items-center justify-center ${
-                        navBarIcon == "brain"
-                            ? "text-main-color font-[600]"
-                            : ""
-                    } hover:bg-tertiary-border rounded-[5%]  transition-all duration-300`}
-                    onClick={() => dispatch(setNavbarItem("brain"))}
-                >
-                    My Brain
-                </div>
-            </Link>
-                }
+                {isUserActive && (
+                    <Link to={"/my-brain"}>
+                        <div
+                            className={`cursor-pointer w-[80px] h-[40px] flex items-center justify-center ${
+                                navBarIcon == "brain"
+                                    ? "text-main-color font-[600]"
+                                    : ""
+                            } hover:bg-tertiary-border rounded-[5%]  transition-all duration-300`}
+                            onClick={() => dispatch(setNavbarItem("brain"))}
+                        >
+                            My Brain
+                        </div>
+                    </Link>
+                )}
                 <Link to={"/about-brain"}>
                     <div
                         className={`cursor-pointer w-[80px] h-[40px] flex items-center justify-center ${
@@ -113,12 +116,14 @@ const Navbar = () => {
                         dispatch(setUserIconClicked(!isUserIconClicked));
                     }}
                 >
-                    { avatar_url ? <img src={avatar_url} />:<UserICon strokeSize={isUserIconClicked ? "2":"1"} /> }
+                    {avatar_url ? (
+                        <img src={avatar_url} />
+                    ) : (
+                        <UserICon strokeSize={isUserIconClicked ? "2" : "1"} />
+                    )}
                 </div>
 
-                { isUserIconClicked && 
-                    <UserDropDown />
-                 }
+                {isUserIconClicked && <UserDropDown />}
             </div>
         </div>
     );
