@@ -20,6 +20,10 @@ class userService {
     static logoutUser(){
         return ApiService.post<any[]>("/user/logout");
     }
+
+    static updateProfile(data: any){
+        return ApiService.post<any[]>("user/update", data);
+    }
 }
 
 export default userService;
