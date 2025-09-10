@@ -7,12 +7,13 @@
     margin:0;
     padding:0;
     box-sizing: border-box;
+
     .scrollbar-hide::-webkit-scrollbar {
       display: none;
     }
     .scrollbar-hide {
-      -ms-overflow-style: none;  /* IE and Edge */
-      scrollbar-width: none;     /* Firefox */
+      -ms-overflow-style: none;
+      scrollbar-width: none;     
     }
 
     --primary-text-color: rgb(255, 255, 255);

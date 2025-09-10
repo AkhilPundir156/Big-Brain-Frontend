@@ -9,6 +9,7 @@ interface InputProps {
     endIcon?: ReactElement;
     defaultValue?: string;
     onchange?: any;
+    row?: number
 }
 
 export const InputElement = ({
@@ -19,7 +20,8 @@ export const InputElement = ({
     startIcon,
     endIcon,
     defaultValue,
-    onchange
+    onchange,
+    row
 }: InputProps) => {
     const InputClass =
         "bg-input-bg border border-primary-border text-secondary-text rounded-md px-3 py-2 focus:outline-none focus:border-secondary-text disabled:opacity-50 transition-all duration-200 w-full";
@@ -34,11 +36,12 @@ export const InputElement = ({
 
             {type === "textarea" ? (
                 <textarea
-                    className={`${InputClass} ${startIcon ? "pl-10" : ""} ${endIcon ? "pr-10" : ""}`}
+                    className={`${InputClass} ${startIcon ? "pl-10" : " "} ${endIcon ? "pr-10" : " "} scrollbar-hide`}
                     ref={inputReference as Ref<HTMLTextAreaElement>}
                     placeholder={placeholder}
                     defaultValue={defaultValue}
                     onChange={onchange}
+                    rows={row ?? 1}
                 />
             ) : (
                 <input

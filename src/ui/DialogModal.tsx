@@ -41,7 +41,7 @@ export const DialogModal = ({ title, trigger, children }: DialogModalProps) => {
                   <h2 className="text-lg font-semibold">{title}</h2>
                   <button
                     onClick={closeDialog}
-                    className="text-secondary-text hover:text-white transition-colors"
+                    className="text-secondary-text rounded-[50%] h-6  w-6 hover:bg-primary-dot hover:text-seconary-bg transition-colors"
                   >
                     ✕
                   </button>
