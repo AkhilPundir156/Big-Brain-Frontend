@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
+import { Toaster } from "react-hot-toast";
 import { Outlet, useLocation, useNavigate } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 
 import userService from "../utils/userService";
 
-import { AppDispatch, RootState } from "../store";
+import { AppDispatch } from "../store";
 import { clearUser, setUser } from "../slices/userSlice";
 
 import { BrainIcon } from "../assets/icons/BrainIcon";
@@ -50,6 +51,9 @@ const Layout = () => {
 
     return (
         <div className="flex min-h-screen flex-col bg-first-bg text-secondary-text selection:bg-primary-dot">
+            <div>
+                <Toaster position="bottom-right" reverseOrder={false} />
+            </div>
             {/* Header */}
             <div className="flex items-center justify-start w-full p-6 fixed">
                 <div className="flex w-full items-center">
