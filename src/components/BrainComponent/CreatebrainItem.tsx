@@ -1,15 +1,15 @@
-import axios from "axios";
 import { useRef, useState } from "react";
+import { useSelector } from "react-redux";
+
+import BrainService from "../../utils/brainService";
+
+import { RootState } from "../../store";
 
 import { Button } from "../../ui/ButtonElement";
 import { InputElement } from "../../ui/InputElement";
-import { useSelector } from "react-redux";
-import { RootState } from "../../store";
 import Loader from "../../ui/Loader";
 
 const CreateBrainItem = () => {
-    const SERVER_URL = import.meta.env.VITE_API_URL;
-
     const titleRef = useRef<HTMLInputElement>(null);
     const descRef = useRef<HTMLTextAreaElement>(null);
     const tagsRef = useRef<HTMLInputElement>(null);
@@ -26,36 +26,26 @@ const CreateBrainItem = () => {
 
         if (!title || !description) return;
 
-        try {
-            setIsSubmitting(true);
-            const formData = new FormData();
-            formData.append("title", title);
-            formData.append("description", description);
-            formData.append("tags", JSON.stringify(tags));
-            formData.append("type", type);
-            if (image) formData.append("image", image);
-            const response = await axios.post(
-                `${SERVER_URL}/brain/create`,
-                formData,
-                {
-                    withCredentials: true,
-                    headers: { "Content-Type": "multipart/form-data" },
-                }
-            );
+        setIsSubmitting(true);
+        const formData = new FormData();
+        formData.append("title", title);
+        formData.append("description", description);
+        formData.append("tags", JSON.stringify(tags));
+        formData.append("type", type);
+        if (image) formData.append("image", image);
 
-            if (response.status === 201) {
-                console.log("✅ Brain item created:", response.data);
-                titleRef.current!.value = "";
-                descRef.current!.value = "";
-                tagsRef.current!.value = "";
-                setType("instagram");
-                setImage(null);
-            }
-        } catch (err) {
-            console.error("❌ Error creating brain item:", err);
-        } finally {
-            setIsSubmitting(false);
+        const response = await BrainService.createBrain(formData);
+
+        if (response.success) {
+            console.log("✅ Brain item created:", response.data);
+            titleRef.current!.value = "";
+            descRef.current!.value = "";
+            tagsRef.current!.value = "";
+            setType("instagram");
+            setImage(null);
         }
+
+        setIsSubmitting(false);
     };
 
     const uiTheme = useSelector((state: RootState) => state.ui);
