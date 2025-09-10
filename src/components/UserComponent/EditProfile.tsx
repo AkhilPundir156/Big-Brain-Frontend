@@ -1,6 +1,7 @@
-import axios from "axios";
 import { useRef } from "react";
 import { useSelector } from "react-redux";
+
+import userService from "../../utils/userService";
 
 import { RootState } from "../../store";
 
@@ -9,7 +10,6 @@ import DialogModal from "../../ui/DialogModal";
 import { InputElement } from "../../ui/InputElement";
 
 const EditProfile = () => {
-    const SERVER_URL = import.meta.env.VITE_API_URL;
     const RootUser = useSelector((state: RootState) => state.user);
 
     const nameRef = useRef<HTMLInputElement>(null);
@@ -17,23 +17,13 @@ const EditProfile = () => {
     const avatarRef = useRef<HTMLInputElement>(null);
 
     const handleSave = async () => {
-        try {
-            const response = await axios.put(
-                `${SERVER_URL}/user/update`,
-                {
-                    name: nameRef.current?.value,
-                    email: RootUser.email,
-                    ProfilePic: avatarRef.current?.value,
-                    password: passwordRef.current?.value,
-                },
-                { withCredentials: true }
-            );
-            if (response.status === 200) {
-                console.log(response);
-            }
-        } catch (error) {
-            console.error("Profile update failed:", error);
-        }
+        const response = await userService.updateProfile({
+            name: nameRef.current?.value,
+            email: RootUser.email,
+            ProfilePic: avatarRef.current?.value,
+            password: passwordRef.current?.value,
+        });
+        console.log(response);
     };
 
     return (
