@@ -26,7 +26,7 @@ const Home = () => {
     }, []);
 
     return (
-        <div className="w-full mt-[7%] flex">
+        <div className="w-full mt-[5.7%] flex">
             {/* Left Section */}
             <div className="w-1/2 p-[2%]">
                 <div className="w-fit pl-[20%] pt-[5%]">
