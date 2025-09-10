@@ -8,6 +8,7 @@ import { AppDispatch, RootState } from "../store";
 import { clearUser, setUser } from "../slices/userSlice";
 
 import { BrainIcon } from "../assets/icons/BrainIcon";
+import { Footer } from "./Footer";
 import Navbar from "./Navbar";
 import Loader from "../ui/Loader";
 
@@ -48,11 +49,15 @@ const Layout = () => {
     }
 
     return (
-        <div className="bg-first-bg selection:bg-primary-dot text-secondary-text h-[100vh] w-[100vw] overflow-y-scroll pb-6">
+        <div className="flex min-h-screen flex-col bg-first-bg text-secondary-text selection:bg-primary-dot">
+            {/* Header */}
             <div className="flex items-center justify-start w-full p-6 fixed">
                 <div className="flex w-full items-center">
                     <BrainIcon size={32} />
-                    <div className="text-[1.3rem] px-2 font-medium w-auto">
+                    <div
+                        className="text-[1.3rem] px-2 font-medium w-auto cursor-pointer"
+                        onClick={() => navigate("/")}
+                    >
                         BIG BRAIN
                     </div>
                 </div>
@@ -60,9 +65,12 @@ const Layout = () => {
 
             <Navbar />
 
-            <div className="flex w-full mt-10">
+            {/* Main content area grows and pushes footer down */}
+            <main className="flex-grow mt-10 h-[80vh] overflow-y-auto scrollbar-hide">
                 <Outlet />
-            </div>
+            </main>
+
+            <Footer />
         </div>
     );
 };

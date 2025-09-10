@@ -20,7 +20,7 @@ const Usage = () => {
 
     return (
         <div className="w-full mt-[5%] flex">
-            <div className="w-[810px] pl-3 m-auto">
+            <div className="w-[800px]  m-auto">
                 {/* Page Header */}
                 <header className="w-full mb-8">
                     <h1 className="w-full mb-3 text-3xl md:text-4xl text-tertiary-text font-bold">
