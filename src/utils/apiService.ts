@@ -1,14 +1,17 @@
 import axios, { AxiosError, AxiosRequestConfig } from "axios";
 import { toast } from "react-hot-toast";
-import { useNavigate } from "react-router-dom";
 
 import { store } from "../store";
 import { setIsLoading } from "../slices/uiSlice";
+
+import toasterClass from "../ui/toasterStyles";
 
 interface AuthenticatedRequestConfig extends AxiosRequestConfig {
     authRequired?: boolean;
     externalApi?: boolean;
 }
+
+
 
 class ApiService {
     static async request<T>(
@@ -20,7 +23,10 @@ class ApiService {
                 const isAuthenticated = state.user?.isAuthenticated;
 
                 if (!isAuthenticated) {
-                    toast.error("You must be logged in to perform this action");
+                    toast.error(
+                        "You must be logged in to perform this action",
+                        toasterClass
+                    );
                     return null;
                 }
             }
@@ -39,7 +45,7 @@ class ApiService {
             const response = await api.request<T>(config);
 
             if ((response.data as any)?.msg) {
-                toast.success((response.data as any).msg);
+                toast.success((response.data as any).msg, toasterClass);
                 //@ts-ignore
                 console.log(response.data?.msg);
             }

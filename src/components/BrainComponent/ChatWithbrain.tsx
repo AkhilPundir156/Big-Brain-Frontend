@@ -19,6 +19,7 @@ const ChatWithBrain = () => {
 
     useEffect(() => {
         chatEndRef.current?.scrollIntoView({ behavior: "smooth" });
+        inputRef.current?.focus();
     }, [messages, isThinking]);
 
     const handleSendMessage = async () => {
