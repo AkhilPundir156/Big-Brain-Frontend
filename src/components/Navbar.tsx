@@ -87,16 +87,16 @@ const Navbar = () => {
                         How to use
                     </div>
                 </Link>
-                <Link to={"/about-dev"}>
+                <Link to={"/pricing-plan"}>
                     <div
                         className={`cursor-pointer w-[136px] h-[40px] flex items-center justify-center ${
-                            navBarIcon == "devinfo"
+                            navBarIcon == "plans"
                                 ? "text-main-color font-[600]"
                                 : ""
                         } hover:bg-tertiary-border rounded-[5%]  transition-all duration-300`}
-                        onClick={() => dispatch(setNavbarItem("devinfo"))}
+                        onClick={() => dispatch(setNavbarItem("plans"))}
                     >
-                        About Developer
+                        Pricing/Plans
                     </div>
                 </Link>
             </div>

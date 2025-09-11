@@ -13,7 +13,7 @@ import Login from "./components/UserComponent/Login";
 import Singup from "./components/UserComponent/Singup";
 import Myprofile from "./components/UserComponent/Myprofile";
 
-import Aboutdev from "./components/UiDetailedComponent/Aboutdev";
+import  Pricing from "./components/UiDetailedComponent/Pricing";
 import About from "./components/UiDetailedComponent/Aboutus";
 import Usage from "./components/UiDetailedComponent/Usage";
 import Contact from "./components/UiDetailedComponent/Contactus";
@@ -32,7 +32,7 @@ function App(): React.ReactElement {
                         <Route path="/signup" element={<Singup />} />
                         <Route path="/create-brain" element={<Createbrain />} />
                         <Route path="/my-profile" element={<Myprofile />} />
-                        <Route path="/about-dev" element={<Aboutdev />} />
+                        <Route path="/pricing-plan" element={<Pricing />} />
                         <Route path="/about-brain" element={<About />} />
                         <Route path="/how-to-use" element={<Usage />} />
                         <Route path="/contact" element={<Contact />} />
