@@ -26,13 +26,12 @@ const CreateBrainItem = () => {
 
         if (!title || !description) return;
 
-        setIsSubmitting(true);
         const formData = new FormData();
         formData.append("title", title);
         formData.append("description", description);
         formData.append("tags", JSON.stringify(tags));
         formData.append("type", type);
-        if (image) formData.append("image", image);
+        if (image) formData.append("uploaded_file", image);
 
         const response = await BrainService.createBrain(formData);
 
@@ -45,12 +44,11 @@ const CreateBrainItem = () => {
             setImage(null);
         }
 
-        setIsSubmitting(false);
     };
 
-    const uiTheme = useSelector((state: RootState) => state.ui);
+    const uiTheme = useSelector((state: RootState) => state.ui.isLoading);
 
-    if (uiTheme.isLoading || isSubmitting) {
+    if (uiTheme) {
         return <Loader />;
     }
 
