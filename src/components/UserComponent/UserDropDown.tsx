@@ -51,6 +51,10 @@ const UserDropDown = () => {
                     className="h-[40px] flex items-center align-center px-2 mb-1 justify-between cursor-pointer  hover:bg-tertiary-border rounded-[5%] transition-all duration-300 "
                     onClick={async () => {
                         dispatch(setUserIconClicked(!isuserIconClicked));
+                        if (!isUserActive) {
+                            navigation("/signup");
+                            return;
+                        }
                         {
                             try {
                                 await userService.logoutUser();
