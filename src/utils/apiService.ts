@@ -11,8 +11,6 @@ interface AuthenticatedRequestConfig extends AxiosRequestConfig {
     externalApi?: boolean;
 }
 
-
-
 class ApiService {
     static async request<T>(
         config: AuthenticatedRequestConfig

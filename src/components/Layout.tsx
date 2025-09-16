@@ -29,7 +29,7 @@ const Layout = () => {
         setCheckingSession(false);
         if (!response || !user) {
             dispatch(clearUser());
-            navigate("/login");
+            // navigate("/login");
             return;
         }
         dispatch(
