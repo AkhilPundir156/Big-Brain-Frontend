@@ -54,7 +54,7 @@ const Signup = () => {
         setSignUp(false);
     };
     return (
-        <div className="flex gap-[30px] flex-col mt-[8%] py-[3%] w-[500px] mx-auto border border-secondary-border rounded-[1%]">
+        <div className="flex gap-[30px] flex-col mt-[6%] py-[3%] w-[500px] mx-auto border border-secondary-border rounded-[1%]">
             <div className="flex items-center justify-center w-full">
                 <div>
                     <div className="flex w-full justify-center items-center">
