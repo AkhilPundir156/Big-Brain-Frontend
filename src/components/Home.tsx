@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../store";
 import { setNavbarItem } from "../slices/uiSlice";
 
-import { people } from "../demo/People_demo";
+import { people } from "../demo/People_data";
 
 import { Button } from "../ui/ButtonElement";
 import ToolTip from "../ui/AnimatedTooltip";
