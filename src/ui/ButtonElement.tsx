@@ -7,12 +7,12 @@ interface ButtonProps {
     text: string;
     startIcon?: ReactElement;
     endIcon?: ReactElement;
-    isFull: boolean;
+    isFull?: boolean;
     onClickHandler?: () => void;
     changeButton?: boolean;
     changeText?: string;
     changeTime?: number;
-    disbale?: boolean
+    disbale?: boolean;
 }
 
 type mapTypes = {
@@ -25,12 +25,12 @@ export const Button = ({
     text,
     startIcon,
     endIcon,
-    isFull,
+    isFull = false,
     onClickHandler,
     changeButton,
     changeText,
     changeTime,
-    disbale
+    disbale,
 }: ButtonProps) => {
     const variantClass: mapTypes = {
         primary:
@@ -48,11 +48,9 @@ export const Button = ({
 
     const [btnText, setBtnText] = useState(text);
 
-
     useEffect(() => {
         setBtnText(text);
-      }, [text]);
-    
+    }, [text]);
 
     const changeButtonSpec = () => {
         if (changeButton && changeTime && changeText) {

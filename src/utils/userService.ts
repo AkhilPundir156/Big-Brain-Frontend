@@ -1,3 +1,5 @@
+import toast from "react-hot-toast";
+
 import ApiService from "./apiService";
 
 class userService {
@@ -17,12 +19,30 @@ class userService {
         window.location.href = `/user/auth/google`;
     }
 
-    static logoutUser(){
+    static logoutUser() {
         return ApiService.post<any[]>("/user/logout");
     }
 
-    static updateProfile(data: any){
+    static updateProfile(data: any) {
         return ApiService.post<any[]>("user/update", data);
+    }
+
+    //@ts-ignore
+    static uploadAvatar(formData: any) {
+        toast.error("This is not Yet Supported");
+        return;
+    }
+
+    static changePassword({
+        oldPassword,
+        newPassword,
+    }: {
+        oldPassword: string;
+        newPassword: string;
+    }) {
+        toast.error("You Can not change you password for now.");
+        console.log({ newPassword, oldPassword });
+        return false;
     }
 }
 

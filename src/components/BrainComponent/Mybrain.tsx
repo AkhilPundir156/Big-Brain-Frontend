@@ -37,8 +37,11 @@ const MyBrain = () => {
     const fetchBrainItems = async () => {
         setIsLoading(true);
         const response: any = await BrainService.getMyBrains();
+
         if (response && response.success) {
             dispatch(setContents(response.data));
+        } else {
+            navigate("/");
         }
         setIsLoading(false);
     };
@@ -170,7 +173,6 @@ const MyBrain = () => {
                     </div>
                 ))}
             </div>
-
         </div>
     );
 };

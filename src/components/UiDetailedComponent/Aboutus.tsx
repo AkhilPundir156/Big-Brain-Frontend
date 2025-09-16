@@ -186,7 +186,7 @@ const About = () => {
                         help you organize, summarize, and find anything
                         instantly.
                         <br />
-                        Proudly maintained by{" "}
+                        Maintained by{" "}
                         <span className="font-medium text-green-text">
                             Akhil Pundir
                         </span>{" "}
