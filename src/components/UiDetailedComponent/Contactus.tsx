@@ -7,7 +7,34 @@ const Contact = () => {
     const inputEmailRef = useRef<HTMLInputElement>(null);
     const inputNameRef = useRef<HTMLInputElement>(null);
     const inputMessageRef = useRef<HTMLTextAreaElement>(null);
-    const submitForm = () => {};
+    const submitForm = async() => {
+        const name = inputNameRef.current?.value;
+        const email = inputEmailRef.current?.value;
+        const message = inputMessageRef.current?.value; 
+        if(!name || !email || !message) {
+            alert("Please fill all the fields");
+            return;
+        }
+        try {
+            const response = await fetch('/contact', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ name, email, message }),
+            });const data = await response.json();
+            if (response.ok) {
+                alert("Message sent successfully");
+                if (inputNameRef.current) inputNameRef.current.value = '';
+                if (inputEmailRef.current) inputEmailRef.current.value = '';
+                if (inputMessageRef.current) inputMessageRef.current.value = '';
+            } else {
+                alert(data.message || "Failed to send message");
+            }
+        } catch (error) {
+            console.error("Error sending message:", error);
+        }
+    };
     return (
         <div className="flex gap-[40px] flex-col">
             <div className="px-[24px] flex items-center justify-between">
