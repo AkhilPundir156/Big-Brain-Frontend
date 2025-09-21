@@ -7,6 +7,11 @@ class userService {
         return ApiService.get<any[]>("/user/me");
     }
 
+    // Contact Message
+    static SendContactMessage(data: any) {
+        return ApiService.post<any>("/user/contact", data);
+    }
+
     static loginUser(data: any) {
         return ApiService.post<any>(`/user/login`, data);
     }
