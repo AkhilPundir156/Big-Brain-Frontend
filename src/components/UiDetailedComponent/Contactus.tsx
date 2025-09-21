@@ -1,40 +1,40 @@
 import { useRef } from "react";
+import { toast } from "react-hot-toast";
+
+import userService from "../../utils/userService";
 
 import { Button } from "../../ui/ButtonElement";
 import { InputElement } from "../../ui/InputElement";
+import toasterClass from "../../ui/toasterStyles";
 
 const Contact = () => {
     const inputEmailRef = useRef<HTMLInputElement>(null);
     const inputNameRef = useRef<HTMLInputElement>(null);
     const inputMessageRef = useRef<HTMLTextAreaElement>(null);
-    const submitForm = async() => {
+
+    const submitForm = async () => {
+
         const name = inputNameRef.current?.value;
         const email = inputEmailRef.current?.value;
-        const message = inputMessageRef.current?.value; 
-        if(!name || !email || !message) {
-            alert("Please fill all the fields");
+        const message = inputMessageRef.current?.value;
+        if (!name || !email || !message) {
+            toast.error("Please fill all the fields", toasterClass);
             return;
         }
-        try {
-            const response = await fetch('/contact', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ name, email, message }),
-            });const data = await response.json();
-            if (response.ok) {
-                alert("Message sent successfully");
-                if (inputNameRef.current) inputNameRef.current.value = '';
-                if (inputEmailRef.current) inputEmailRef.current.value = '';
-                if (inputMessageRef.current) inputMessageRef.current.value = '';
-            } else {
-                alert(data.message || "Failed to send message");
-            }
-        } catch (error) {
-            console.error("Error sending message:", error);
+
+        const res = await userService.SendContactMessage({
+            name,
+            email,
+            message,
+        });
+
+        if (res.ok) {
+            if (inputNameRef.current) inputNameRef.current.value = "";
+            if (inputEmailRef.current) inputEmailRef.current.value = "";
+            if (inputMessageRef.current) inputMessageRef.current.value = "";
         }
     };
+
     return (
         <div className="flex gap-[40px] flex-col">
             <div className="px-[24px] flex items-center justify-between">
