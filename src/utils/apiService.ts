@@ -56,7 +56,7 @@ class ApiService {
             toast.error(
                 error.response?.data?.message || "Something went wrong"
             );
-
+            store.dispatch(setIsLoading(false));
             return null;
         } finally {
             store.dispatch(setIsLoading(false));
