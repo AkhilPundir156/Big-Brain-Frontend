@@ -20,6 +20,7 @@ const CreateBrainItem = () => {
     const [isSubmitting, setIsSubmitting] = useState(false);
 
     const handleSubmit = async () => {
+        setIsSubmitting(true);
         const title = titleRef.current?.value.trim() || "";
         const description = descRef.current?.value.trim() || "";
         const tags = tagsRef.current?.value.trim()?.split(",") || "";
@@ -43,6 +44,7 @@ const CreateBrainItem = () => {
             setType("instagram");
             setImage(null);
         }
+        setIsSubmitting(false);
 
     };
 
