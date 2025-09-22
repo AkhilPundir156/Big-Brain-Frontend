@@ -15,10 +15,6 @@ class userService {
         return ApiService.post<any>("/user/signup", data);
     }
 
-    static googleAuth() {
-        window.location.href = `/user/auth/google`;
-    }
-
     static logoutUser() {
         return ApiService.post<any[]>("/user/logout");
     }

@@ -15,6 +15,7 @@ import EmailIcon from "../../assets/icons/EmailIcon";
 import LockIcon from "../../assets/icons/LockIcon";
 import EyeIcon from "../../assets/icons/Showpassword";
 import EyeIconOff from "../../assets/icons/Hidepassword";
+import { googleAuth } from "../../utils/googleAuth";
 
 const Signup = () => {
 
@@ -128,7 +129,7 @@ const Signup = () => {
                         text="Sign Up with Google"
                         size="lg"
                         isFull={true}
-                        onClickHandler={userService.googleAuth}
+                        onClickHandler={googleAuth}
                         changeButton={true}
                         changeTime={2000}
                         disbale={signUp}
