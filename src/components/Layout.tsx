@@ -16,22 +16,31 @@ import Loader from "../ui/Loader";
 const Layout = () => {
     const dispatch = useDispatch<AppDispatch>();
     const [isCheckingSession, setCheckingSession] = useState<boolean>(true);
+    const [showInitWarning, setShowInitWarning] = useState<boolean>(false);
     const navigate = useNavigate();
     const location = useLocation();
 
     useEffect(() => {
-        checkSession();
+        // Start timeout for warning
+        const warningTimer = setTimeout(() => {
+            setShowInitWarning(true);
+        }, 2000);
+
+        checkSession().finally(() => {
+            clearTimeout(warningTimer);
+        });
     }, []);
 
     const checkSession = async () => {
         const response: any = await userService.getMyProfile();
         const user = response?.user;
         setCheckingSession(false);
+
         if (!response || !user) {
             dispatch(clearUser());
-            // navigate("/login");
             return;
         }
+
         dispatch(
             setUser({
                 _id: user._id || null,
@@ -41,12 +50,14 @@ const Layout = () => {
                 isAuthenticated: true,
             })
         );
+
         if (user && location.pathname === "/login") {
             navigate("/my-brain");
         }
     };
+
     if (isCheckingSession) {
-        return <Loader />;
+        return <Loader showInitWarning={showInitWarning} />;
     }
 
     return (
@@ -69,7 +80,6 @@ const Layout = () => {
 
             <Navbar />
 
-            {/* Main content area grows and pushes footer down */}
             <main className="flex-grow mt-10 h-[80vh] overflow-y-auto scrollbar-hide">
                 <Outlet />
             </main>
