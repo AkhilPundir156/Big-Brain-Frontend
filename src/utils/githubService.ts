@@ -3,7 +3,7 @@ import ApiService from "./apiService";
 class gitHubService {
     static FeContributros() {
         return ApiService.get<any[]>(
-            "https://api.github.com/repos/AkhilPundir156/Big-Brain-Backend/contributors",
+            "https://api.github.com/repos/AkhilPundir156/Big-Brain-Frontend/contributors",
             { externalApi: true }
         );
     }
