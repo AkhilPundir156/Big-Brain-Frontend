@@ -1,3 +1,4 @@
+import { useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
@@ -7,12 +8,11 @@ import { clearUser } from "../../slices/userSlice";
 
 import userService from "../../utils/userService";
 
+import { ArrowLink } from "../../assets/icons/ArrowLink";
+import { ChevronRight } from "../../assets/icons/ChevronRight";
 import { MoonIcon } from "../../assets/icons/MoonIcon";
 import { LightIcon } from "../../assets/icons/LightIcon";
 import { UserICon } from "../../assets/icons/UserIcon";
-import { ChevronRight } from "../../assets/icons/ChevronRight";
-import { ArrowLink } from "../../assets/icons/ArrowLink";
-import { useEffect, useRef } from "react";
 
 const UserDropDown = () => {
     const navigation = useNavigate();
