@@ -86,7 +86,11 @@ const Login = () => {
                     </div>
                 </div>
             </div>
-            <div className="px-[24px] flex  gap-[24px] tracking-[-.2px] flex-col">
+            <div className="px-[24px] flex  gap-[24px] tracking-[-.2px] flex-col" onKeyDown={(e) => {
+                if (e.key === "Enter") {
+                    e.preventDefault();
+                    submitForm();
+                }}}>
                 <div className="w-full flex flex-col gap-[12px] ">
                     <InputElement
                         startIcon={<EmailIcon strokeSize={0.5} size={22} />}
@@ -101,6 +105,7 @@ const Login = () => {
                         type={isShowPass ? "text" : "password"}
                         inputReference={inputPasswordRef}
                         endIcon={isShowPass ? <EyeIcon /> : <EyeIconOff />}
+                        
                     />
                 </div>
                 <div className="flex justify-end items-center gap-[12px] text-[20px] font-[400] tracking-[-0.2px] leading-[120%] text-tertiary-text">

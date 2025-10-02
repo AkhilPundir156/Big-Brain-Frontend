@@ -79,7 +79,12 @@ const Signup = () => {
                 </div>
             </div>
             <div className="px-[24px] flex  gap-[24px] tracking-[-.2px] flex-col">
-                <div className="w-full flex flex-col gap-[12px] ">
+                <div className="w-full flex flex-col gap-[12px] " onKeyDown={(e)=>{
+                    if(e.key==="Enter"){
+                        e.preventDefault();
+                        submitForm();
+                    };
+                }}>
                     <InputElement
                         startIcon={<UserICon strokeSize=".4" />}
                         placeholder="Name..."
