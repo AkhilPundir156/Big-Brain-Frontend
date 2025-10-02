@@ -112,7 +112,7 @@ const Home = () => {
                 </div>
 
                 {/* Right Section - Hero Image */}
-                <div className="w-1/2 flex justify-center">
+                <div className="w-1/2 flex justify-center h-[70vh]">
                     <img
                         src={
                             theme.theme === "dark"
