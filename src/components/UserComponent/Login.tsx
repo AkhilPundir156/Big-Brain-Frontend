@@ -52,6 +52,7 @@ const Login = () => {
                 _id: user.id || null,
                 name: user.name || "",
                 email: user.email || "",
+                theme: user.theme || "light",
                 profilePic: user.imgUrl || "",
                 isAuthenticated: true,
             })

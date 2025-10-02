@@ -101,10 +101,19 @@ const UserDropDown = () => {
                 </div>
 
                 <div
-                    className="flex items-center align-center justify-between px-2 cursor-pointer  hover:bg-tertiary-border rounded-[5%] transition-all duration-300 "
-                    onClick={() => {
-                        dispatch(setTheme(theme == "dark" ? "light" : "dark"));
+                    className="flex items-center align-center justify-between px-2 cursor-pointer   hover:bg-tertiary-border rounded-[5%] transition-all duration-300 "
+                    onClick={async() => {
+                        const newTheme = theme === "dark" ? "light" : "dark"
+                        dispatch(setTheme(newTheme));
                         dispatch(setUserIconClicked(!isuserIconClicked));
+
+                        try{
+                            if(isUserActive){
+                                await userService.updateTheme(newTheme);
+                            }
+                        }catch(err){
+                            console.error("Failed to update them:", err);
+                        }
                     }}
                 >
                     <div className="">

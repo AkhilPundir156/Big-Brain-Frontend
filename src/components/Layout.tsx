@@ -46,6 +46,7 @@ const Layout = () => {
                 _id: user._id || null,
                 name: user.name || "",
                 email: user.email || "",
+                theme:user.theme || "light",
                 profilePic: user.avatar_url || "",
                 isAuthenticated: true,
             })

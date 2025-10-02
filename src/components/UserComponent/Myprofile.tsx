@@ -17,6 +17,7 @@ const MyProfile = () => {
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [avatar, setAvatar] = useState("");
+    const [theme ,setTheme] = useState("");
 
     const isLoading = useSelector((state: RootState) => state.ui.isLoading);
     const navigation = useNavigate();
@@ -36,6 +37,7 @@ const MyProfile = () => {
                 setUser(user);
                 setName(user.name);
                 setEmail(user.email);
+                setTheme(user.theme || "light");
                 setAvatar(user.avatar_url || "");
             } catch (err) {
                 console.error("Failed to load profile", err);
@@ -62,6 +64,7 @@ const MyProfile = () => {
                 name={name}
                 setName={setName}
                 email={email}
+                theme={theme}
                 avatar={avatar}
                 setAvatar={setAvatar}
             />

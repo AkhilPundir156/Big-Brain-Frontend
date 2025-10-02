@@ -62,11 +62,14 @@ class ApiService {
             store.dispatch(setIsLoading(false));
         }
     }
-
+    
     static get<T>(url: string, config?: AuthenticatedRequestConfig) {
         return this.request<T>({ url, method: "GET", ...config });
     }
 
+    static patch<T>(url: string, data?: any, config?:AuthenticatedRequestConfig){
+        return this.request<T>({ url, method: "PATCH", data, ...config});
+    }
     static post<T>(
         url: string,
         data?: any,
