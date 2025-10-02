@@ -12,11 +12,13 @@ import { LightIcon } from "../../assets/icons/LightIcon";
 import { UserICon } from "../../assets/icons/UserIcon";
 import { ChevronRight } from "../../assets/icons/ChevronRight";
 import { ArrowLink } from "../../assets/icons/ArrowLink";
+import { useEffect, useRef } from "react";
 
 const UserDropDown = () => {
     const navigation = useNavigate();
 
     const dispatch = useDispatch<AppDispatch>();
+    const userIconRef = useRef<HTMLDivElement>(null);
 
     const theme = useSelector((state: RootState) => state.ui.theme);
     const isuserIconClicked = useSelector(
@@ -26,8 +28,32 @@ const UserDropDown = () => {
         (state: RootState) => state.user.isAuthenticated
     );
 
+    useEffect(() => {
+        const handleClickOutside = (event: MouseEvent) => {
+            if (
+                userIconRef.current &&
+                !userIconRef.current.contains(event.target as Node) &&
+                !document
+                    .getElementById("userIcon-ref")
+                    ?.contains(event.target as Node)
+            ) {
+                if (isuserIconClicked) {
+                    dispatch(dispatch(setUserIconClicked(!isuserIconClicked)));
+                }
+            }
+        };
+
+        document.addEventListener("mousedown", handleClickOutside);
+        return () => {
+            document.removeEventListener("mousedown", handleClickOutside);
+        };
+    }, []);
+
     return (
-        <div className="absolute h-[145px] top-[70px] border border-primary-border right-0 min-w-[150px] bg-primary-bg rounded-[6%] pt-2">
+        <div
+            className="absolute h-[145px] top-[70px] border border-primary-border right-0 min-w-[150px] bg-primary-bg rounded-[6%] pt-2"
+            ref={userIconRef}
+        >
             <div>
                 <div
                     className="h-[40px] flex items-center align-center px-2 mb-1 justify-between cursor-pointer  hover:bg-tertiary-border rounded-[5%] transition-all duration-300 "

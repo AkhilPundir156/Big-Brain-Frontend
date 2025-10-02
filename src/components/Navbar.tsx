@@ -111,6 +111,7 @@ const Navbar = () => {
                 />
 
                 <div
+                    id="userIcon-ref"
                     className="cursor-pointer w-[40px] h-[40px] flex items-center text-tertiary-text justify-center hover:bg-tertiary-border rounded-[50%]  transition-all duration-300"
                     onClick={() => {
                         dispatch(setUserIconClicked(!isUserIconClicked));

@@ -17,6 +17,7 @@ import CreateBrainItem from "./CreatebrainItem";
 import { Button } from "../../ui/ButtonElement";
 import DialogModal from "../../ui/DialogModal";
 import Loader from "../../ui/Loader";
+import CreateDoc from "../../assets/icons/empty-doc";
 
 const MyBrain = () => {
     const navigate = useNavigate();
@@ -121,6 +122,15 @@ const MyBrain = () => {
 
             {/* Brain Items Grid */}
             <div className="grid pt-12 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                {brainItems.length === 0 && (
+                    <div className="h-[70vh] w-[96vw] flex items-center justify-center">
+                        <div className="flex flex-col justify-center items-center gap-4 text-center">
+                            <CreateDoc />
+                            <div className="pl-10 text-xl font-[700] text-secondary-text">Please Create a Brain Item to see.</div>
+                        </div>
+                    </div>
+                )}
+
                 {brainItems?.map((item, index) => (
                     <div
                         key={item._id || index}

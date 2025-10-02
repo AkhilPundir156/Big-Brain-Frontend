@@ -53,9 +53,9 @@ class ApiService {
             const error = err as AxiosError<any>;
             console.error("API Error:", error.response?.data || error.message);
 
-            toast.error(
-                error.response?.data?.message || "Something went wrong"
-            );
+            if (error.response?.data?.message) {
+                toast.error(error.response?.data?.message);
+            }
             store.dispatch(setIsLoading(false));
             return null;
         } finally {
