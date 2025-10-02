@@ -1,5 +1,5 @@
 import { useRef, useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import BrainService from "../../utils/brainService";
 
@@ -8,12 +8,15 @@ import { RootState } from "../../store";
 import { Button } from "../../ui/ButtonElement";
 import { InputElement } from "../../ui/InputElement";
 import Loader from "../../ui/Loader";
+import { addContent } from "../../slices/contentSlice";
 
 const CreateBrainItem = () => {
     const titleRef = useRef<HTMLInputElement>(null);
     const descRef = useRef<HTMLTextAreaElement>(null);
     const tagsRef = useRef<HTMLInputElement>(null);
     const linkRef = useRef<HTMLInputElement>(null);
+
+    const dispatch= useDispatch();
 
     const [type, setType] = useState("instagram");
     const [image, setImage] = useState<File | null>(null);
@@ -35,6 +38,7 @@ const CreateBrainItem = () => {
         if (image) formData.append("uploaded_file", image);
 
         const response = await BrainService.createBrain(formData);
+        
 
         if (response.success) {
             console.log("✅ Brain item created:", response.data);
@@ -43,6 +47,7 @@ const CreateBrainItem = () => {
             tagsRef.current!.value = "";
             setType("instagram");
             setImage(null);
+            dispatch(addContent(response.data));
         }
         setIsSubmitting(false);
 

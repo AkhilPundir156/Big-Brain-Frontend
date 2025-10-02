@@ -54,7 +54,11 @@ const ChangePasswordModal = () => {
                     text="Change Password"
                 />
             }
-            onclose={() => {}}
+            onclose={() => {
+                setOldPassword("");
+                setNewPassword("");
+                setConfirmPassword("");
+            }}
         >
             <div className="flex flex-col gap-4">
                 {/* Password fields */}

@@ -1,6 +1,7 @@
 import toast from "react-hot-toast";
 
 import ApiService from "./apiService";
+import { retry } from "@reduxjs/toolkit/query";
 
 class userService {
     static getMyProfile() {
@@ -28,6 +29,9 @@ class userService {
         return ApiService.post<any[]>("user/update", data);
     }
 
+    static updateTheme(data:any){
+        return ApiService.patch<any>("user/theme",data);
+    }
     //@ts-ignore
     static uploadAvatar(formData: any) {
         toast.error("This is not Yet Supported");
