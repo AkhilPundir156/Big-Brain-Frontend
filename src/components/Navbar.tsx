@@ -35,8 +35,12 @@ const Navbar = () => {
     }, [theme]);
 
     return (
-        <div className="bg-primary-bg w-[800px] h-[64px] fixed top-[16px] left-[calc(50%-400px)] p-[16px] py-0 flex justify-between border border-primary-border rounded-[12px] z-[1]">
-            <div className="flex items-center gap-[16px] text-tertiary-text">
+        <div className="bg-primary-bg w-screen max-w-[800px] h-[64px] fixed md:top-[16px] md:left-[calc(50%-400px)] p-[16px] py-0 flex justify-between border border-primary-border rounded-[12px] z-[1]">
+            <div className="sm:hidden ">
+                hello
+            </div>
+            {/* Large Screen View */}
+            <div className="hidden md:flex items-center gap-[16px] text-tertiary-text ">
                 <Link to={"/"}>
                     <div
                         className={`cursor-pointer w-[60px] h-[40px] flex items-center justify-center ${
