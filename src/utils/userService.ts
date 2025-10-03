@@ -1,7 +1,6 @@
 import toast from "react-hot-toast";
 
 import ApiService from "./apiService";
-import { retry } from "@reduxjs/toolkit/query";
 
 class userService {
     static getMyProfile() {

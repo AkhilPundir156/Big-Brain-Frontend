@@ -6,6 +6,7 @@ import { useDispatch } from "react-redux";
 import userService from "../utils/userService";
 
 import { AppDispatch } from "../store";
+import { setTheme } from "../slices/uiSlice";
 import { clearUser, setUser } from "../slices/userSlice";
 
 import { BrainIcon } from "../assets/icons/BrainIcon";
@@ -51,6 +52,8 @@ const Layout = () => {
                 isAuthenticated: true,
             })
         );
+
+        dispatch(setTheme(user.theme || "light"));
 
         if (user && location.pathname === "/login") {
             navigate("/my-brain");
