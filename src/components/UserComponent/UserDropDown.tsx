@@ -109,7 +109,7 @@ const UserDropDown = () => {
 
                         try{
                             if(isUserActive){
-                                await userService.updateTheme(newTheme);
+                                await userService.updateTheme({theme: newTheme});
                             }
                         }catch(err){
                             console.error("Failed to update them:", err);

@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, Link } from "react-router-dom";
 
 import { RootState, AppDispatch } from "../../store";
-import { setNavbarItem } from "../../slices/uiSlice";
+import { setNavbarItem, setTheme } from "../../slices/uiSlice";
 import { setUser } from "../../slices/userSlice";
 
 import { Button } from "../../ui/ButtonElement";
@@ -57,6 +57,7 @@ const Login = () => {
                 isAuthenticated: true,
             })
         );
+        dispatch(setTheme(user.theme || "light"));
         navigation("/my-brain");
 
         setLoginIn(false);
