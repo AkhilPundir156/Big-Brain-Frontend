@@ -18,8 +18,6 @@ import EyeIconOff from "../../assets/icons/Hidepassword";
 import { googleAuth } from "../../utils/googleAuth";
 
 const Signup = () => {
-
-
     const naviagtion = useNavigate();
     const [signUp, setSignUp] = useState(false);
 
@@ -79,25 +77,49 @@ const Signup = () => {
                 </div>
             </div>
             <div className="px-[24px] flex  gap-[24px] tracking-[-.2px] flex-col">
-                <div className="w-full flex flex-col gap-[12px] " onKeyDown={(e)=>{
-                    if(e.key==="Enter"){
-                        e.preventDefault();
-                        submitForm();
-                    };
-                }}>
+                <div
+                    className="w-full flex flex-col gap-[12px] "
+                    onKeyDown={(e) => {
+                        if (e.key === "Enter") {
+                            const active = document.activeElement;
+                            if (
+                                active?.classList.contains(
+                                    "email"
+                                ) ||
+                                active?.classList.contains(
+                                    "name-ref"
+                                )
+                            ) {
+                                const inputs = Array.from(
+                                    document.querySelectorAll("input")
+                                );
+                                //@ts-ignore
+                                const index = inputs.indexOf(active);
+                                if (index > -1 && index + 1 < inputs.length) {
+                                    inputs[index + 1].focus();
+                                }
+
+                                e.preventDefault();
+                                return;
+                            }
+                            e.preventDefault();
+                            submitForm();
+                        }
+                    }}
+                >
                     <InputElement
                         startIcon={<UserICon strokeSize=".4" />}
                         placeholder="Name..."
                         type="Text"
                         inputReference={inputNameRef}
-                        addedClass="items-center"
+                        addedClass="items-center name-ref"
                     />
                     <InputElement
                         startIcon={<EmailIcon strokeSize={0.5} size={22} />}
                         placeholder="Email..."
                         type="Text"
                         inputReference={inputEmailRef}
-                        addedClass="items-center"
+                        addedClass="items-center email"
                     />
                     <InputElement
                         startIcon={<LockIcon strokeWidth={0.5} size={23} />}
