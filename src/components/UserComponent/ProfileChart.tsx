@@ -18,8 +18,8 @@ const ProfileChart = () => {
     );
 
     return (
-        <div className=" border rounded-xl shadow-sm pb-10 border-secondary-border">
-            <div className="flex justify-between items-center p-8">
+        <div className="border rounded-xl shadow-sm pb-10 border-secondary-border w-full sm:w-[90%] md:w-full mx-auto">
+            <div className="flex justify-between items-center p-4 sm:p-8">
                 <h2 className="text-lg font-semibold flex items-center gap-2">
                     <Calendar className="w-5 h-5 text-accent-color" /> Activity
                 </h2>
@@ -33,7 +33,7 @@ const ProfileChart = () => {
                     <option value="years">Years</option>
                 </select>
             </div>
-            <ResponsiveContainer width="100%" height={250} className={"pr-10"}>
+            <ResponsiveContainer width="95%" height={250}>
                 <LineChart data={profileStats.queriesPerDay}>
                     <CartesianGrid strokeDasharray="3 3" stroke="gray" />
                     <XAxis

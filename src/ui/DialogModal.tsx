@@ -38,7 +38,7 @@ export const DialogModal = ({ title, trigger, children, onclose }: DialogModalPr
                    - mobile: width 90vw
                    - md+: original max-w-4xl (unchanged)
                 */
-                className="bg-primary-bg text-secondary-text rounded-2xl shadow-xl w-[90vw] md:w-full md:max-w-4xl mt-12 p-6 relative max-h-[90vh] overflow-y-auto"
+                className="bg-primary-bg text-secondary-text rounded-2xl shadow-xl w-[90vw] md:w-full md:max-w-4xl  sm:mt-24 p-6 relative max-h-[90vh] overflow-y-auto"
                 initial={{ opacity: 0, y: -30, scale: 0.95 }}
                 animate={{ opacity: 1, y: 0, scale: 1 }}
                 exit={{ opacity: 0, y: 40, scale: 0.95 }}
