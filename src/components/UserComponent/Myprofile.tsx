@@ -17,7 +17,7 @@ const MyProfile = () => {
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [avatar, setAvatar] = useState("");
-    const [theme ,setTheme] = useState("");
+    const [theme, setTheme] = useState("");
 
     const isLoading = useSelector((state: RootState) => state.ui.isLoading);
     const navigation = useNavigate();
@@ -51,24 +51,46 @@ const MyProfile = () => {
     }
 
     return (
-        <div className="mx-auto flex justify-between p-20 pb-0 h-full gap-10">
-            {/* Left: Stats + Chart */}
-            <div className="flex flex-col gap-8 w-[40%] mx-auto p-10">
-                <ProfileStats />
-                <ProfileChart />
+        <>
+            {/* Large screens (unchanged) */}
+            <div className="mx-auto hidden sm:flex justify-between p-10 sm:p-20 pb-0 h-full gap-10">
+                <div className="hidden sm:flex flex-col gap-8 w-[40%] mx-auto p-10">
+                    <ProfileStats />
+                    <ProfileChart />
+                </div>
+
+                {/* Right: Profile Info */}
+                <ProfileInfo
+                    user={user}
+                    name={name}
+                    setName={setName}
+                    email={email}
+                    theme={theme}
+                    avatar={avatar}
+                    setAvatar={setAvatar}
+                />
             </div>
 
-            {/* Right: Profile Info */}
-            <ProfileInfo
-                user={user}
-                name={name}
-                setName={setName}
-                email={email}
-                theme={theme}
-                avatar={avatar}
-                setAvatar={setAvatar}
-            />
-        </div>
+            {/* Small screens only (reordered) */}
+            <div className="flex sm:hidden flex-col gap-8 w-full p-10">
+                {/* First: Profile Info */}
+                <ProfileInfo
+                    user={user}
+                    name={name}
+                    setName={setName}
+                    email={email}
+                    theme={theme}
+                    avatar={avatar}
+                    setAvatar={setAvatar}
+                />
+
+                {/* Then Chart */}
+                <ProfileChart />
+
+                {/* Then Stats */}
+                <ProfileStats />
+            </div>
+        </>
     );
 };
 

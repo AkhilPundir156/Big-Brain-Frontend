@@ -7,6 +7,7 @@
     margin:0;
     padding:0;
     box-sizing: border-box;
+    --toast-width: 20vw;
 
     .scrollbar-hide::-webkit-scrollbar {
       display: none;
@@ -58,4 +59,36 @@
       --tertiary-border-color: rgb(240,240,240);
       --input-bg-color:rgb(255,255,255);
   }
+}
+@media (max-width: 768px) {
+  :root {
+    --toast-width: 80vw;
+  }
+}
+
+.ripple {
+  position: relative;
+  overflow: hidden;
+}
+
+.ripple::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  background: radial-gradient(circle, rgba(255,255,255,0.3) 10%, transparent 10.01%);
+  background-repeat: no-repeat;
+  background-position: 50%;
+  transform: scale(10,10);
+  opacity: 0;
+  transition: transform 0.5s, opacity 1s;
+}
+
+.ripple:active::after {
+  transform: scale(0,0);
+  opacity: 1;
+  transition: 0s;
 }

@@ -43,10 +43,10 @@ const Sharedbrain = () => {
     if (shareBrain && shareBrain.length === 0) {
         return (
             <div className="p-10">
-                <div className="h-[70vh] w-[93vw] pt-20 flex items-center justify-center">
+                <div className="h-[70vh] sm:w-[93vw] pt-20 flex items-center justify-center">
                     <div className="flex flex-col justify-center items-center gap-4 text-center">
                         <CreateDoc />
-                        <div className="pl-10 text-xl font-[700] text-secondary-text">
+                        <div className="sm:pl-10 text-xl font-[700] text-secondary-text">
                             There is no Content in the Shared Brain.
                         </div>
                     </div>

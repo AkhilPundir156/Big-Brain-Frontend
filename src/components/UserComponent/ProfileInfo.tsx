@@ -31,7 +31,6 @@ const ProfileInfo = ({
 
         try {
             const res = await userService.uploadAvatar(formData);
-
             //@ts-ignore
             if (res?.url) setAvatar(res.url);
         } catch (err) {
@@ -58,7 +57,16 @@ const ProfileInfo = ({
     };
 
     return (
-        <div className="flex flex-col items-center gap-6 w-1/4 border-l border-secondary-border p-10 h-full">
+        <div
+            className="
+    flex flex-col items-center gap-6
+    w-full max-w-sm sm:max-w-md md:w-1/4
+    p-4 sm:p-6 md:p-10
+    sm:border-l sm:border-secondary-border
+    h-full
+    mx-auto sm:mx-0
+"
+        >
             {/* Profile picture */}
             <div className="relative group">
                 <img
@@ -69,7 +77,7 @@ const ProfileInfo = ({
                         )}&background=random`
                     }
                     alt="Avatar"
-                    className="h-[18rem]  object-cover border shadow-sm"
+                    className="h-48 sm:h-60 md:h-[18rem] w-48 sm:w-60 md:w-full object-cover border shadow-sm"
                 />
                 <button
                     onClick={() => fileInputRef.current?.click()}
@@ -87,52 +95,55 @@ const ProfileInfo = ({
             </div>
 
             {/* Name + Email */}
-            <div className="text-center w-full flex flex-col items-center group gap-2">
-                <div className="hover:border-b">
-                    <input
-                        type="text"
-                        value={name}
-                        onChange={(e) => setName(e.target.value)}
-                        className={`text-xl font-semibold bg-transparent text-center outline-none
-                        border-b transition-colors
-                        ${
-                            hasChanges
-                                ? "border-accent-color"
-                                : "border-transparent group-hover:border-accent-color"
-                        }`}
-                        style={{ width: `${name.length + 1}ch` }}
-                    />
-                </div>
-                <p className="text-sm text-tertiary-text">{email}</p>
+            <div className="text-center w-full flex flex-col items-center gap-2">
+                <input
+                    type="text"
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                    className={`text-xl sm:text-2xl font-semibold bg-transparent text-center outline-none border-b transition-colors ${
+                        hasChanges
+                            ? "border-accent-color"
+                            : "border-transparent group-hover:border-accent-color"
+                    }`}
+                    style={{ width: `${name.length + 1}ch` }}
+                />
+                <p className="text-sm sm:text-base text-tertiary-text">
+                    {email}
+                </p>
             </div>
 
             {/* Action buttons */}
-            {hasChanges ? (
-                <div className="flex gap-4">
-                    <Button
-                        variant="primary"
-                        size="md"
-                        text="Save"
-                        onClickHandler={handleSave}
-                    />
-                    <Button
-                        variant="secondary"
-                        size="md"
-                        text="Cancel"
-                        onClickHandler={handleCancel}
-                    />
-                </div>
-            ) : (
-                <div className="flex gap-4">
-                    <ChangePasswordModal />
-                    <Button
-                        variant="secondary"
-                        size="md"
-                        text="Logout"
-                        onClickHandler={handleLogout}
-                    />
-                </div>
-            )}
+            <div className="flex gap-3 w-full justify-center">
+                {hasChanges ? (
+                    <>
+                        <Button
+                            variant="primary"
+                            size="md"
+                            text="Save"
+                            isFull={false}
+                            onClickHandler={handleSave}
+                        />
+                        <Button
+                            variant="secondary"
+                            size="md"
+                            text="Cancel"
+                            isFull={false}
+                            onClickHandler={handleCancel}
+                        />
+                    </>
+                ) : (
+                    <>
+                        <ChangePasswordModal />
+                        <Button
+                            variant="secondary"
+                            size="md"
+                            text="Logout"
+                            isFull={false}
+                            onClickHandler={handleLogout}
+                        />
+                    </>
+                )}
+            </div>
         </div>
     );
 };
