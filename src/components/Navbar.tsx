@@ -42,7 +42,7 @@ const Navbar = () => {
                 {/* Hamburger button */}
                 <button
                     onClick={() => setIsMenuOpen(true)}
-                    className="text-tertiary-text text-xl p-2 focus:outline-none z-50 relative"
+                    className="text-tertiary-text text-xl p-2 focus:outline-none z-100 relative"
                 >
                     ☰
                 </button>
