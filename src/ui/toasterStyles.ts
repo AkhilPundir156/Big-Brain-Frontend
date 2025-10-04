@@ -6,8 +6,8 @@ const toasterClass = {
     style: {
         background: "var(--secondary-bg-color)",
         color: "var(--primary-text-color)",
-        width: "20vw",
-        minWidth: "20vw",
+        width: "var(--toast-width)",
+        minWidth: "var(--toast-width)",
     },
 };
 
