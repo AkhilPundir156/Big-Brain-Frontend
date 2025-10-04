@@ -38,12 +38,13 @@ const Home = () => {
     return (
         <div className="w-full mt-[5.7%] flex flex-col relative">
             {showWarning && (
-                <div className="fixed top-[90px] left-1/2 transform -translate-x-1/2 w-[25vw] bg-yellow-100 border border-yellow-500 text-yellow-800 rounded-lg shadow-lg p-4 flex items-start justify-between z-50">
+                <div className="fixed sm:top-[90px] sm:left-1/2 transform sm:-translate-x-1/2 sm:w-[25vw] bg-yellow-100 border border-yellow-500 text-yellow-800 rounded-lg shadow-lg p-4 flex items-start justify-between z-50">
                     <div>
                         <p className="font-semibold">⚠️ Limited Features</p>
                         <p className="text-sm">
                             Some features are temporarily unavailable due to
-                            memory limitations and will be back as soon as we upgrade our hosting.
+                            memory limitations and will be back as soon as we
+                            upgrade our hosting.
                         </p>
                     </div>
                     <button
@@ -54,20 +55,34 @@ const Home = () => {
                     </button>
                 </div>
             )}
-
-            <div className="flex flex-1">
+            <div className="flex flex-col md:flex-row flex-1">
                 {/* Left Section */}
-                <div className="w-1/2 p-[2%]">
-                    <div className="w-fit pl-[20%] pt-[5%]">
-                        {/* Home Page Text Content */}
-                        <h2 className="text-[2.6rem] font-bold leading-snug">
+                <div className="w-full md:w-1/2 p-[2%] flex flex-col items-center md:items-start">
+                    <div className="w-fit md:pl-[20%] md:pt-[5%] flex flex-col items-center md:items-start">
+                        {/* Heading */}
+                        <h2 className="text-[1.5rem] md:text-[2.6rem] font-bold leading-snug text-center md:text-left">
                             Meet Your{" "}
                             <span className="text-green-text">
                                 Smartest Brain Ever
                             </span>{" "}
                             !!!
                         </h2>
-                        <p className="mt-4 text-lg tracking-wide text-tertiary-text">
+
+                        {/* Hero Image for small screens */}
+                        <div className="block md:hidden w-full flex justify-center mt-6">
+                            <img
+                                src={
+                                    theme.theme === "dark"
+                                        ? HomeHeroImg
+                                        : HomeHeroWhiteImg
+                                }
+                                alt="AI Powered Brain"
+                                className="w-[75%] max-w-[400px]"
+                            />
+                        </div>
+
+                        {/* Description */}
+                        <p className="mt-4 text-base md:text-lg tracking-wide text-tertiary-text text-center md:text-left">
                             Stop juggling tabs and apps! Effortlessly chat with
                             your{" "}
                             <span className="font-semibold">
@@ -84,7 +99,7 @@ const Home = () => {
                         </p>
 
                         {/* Action Buttons */}
-                        <div className="mt-8 flex gap-4">
+                        <div className="mt-8 flex gap-4 flex-wrap justify-center md:justify-start">
                             <Button
                                 variant="primary"
                                 size="lg"
@@ -101,18 +116,18 @@ const Home = () => {
                             />
                         </div>
 
-                        {/* Animated Tool Tip */}
-                        <div className="m-auto pt-24 flex w-full justify-center">
+                        {/* Tooltip */}
+                        <div className="pt-16 md:pt-24 flex w-full justify-center">
                             <ToolTip items={people} />
                         </div>
-                        <div className="ml-3 pt-3 text-center text-[1.2rem] font-[500] text-secondary-text">
+                        <div className="pt-3 w-full text-center text-[1.1rem] md:text-[1.2rem] font-[500] text-secondary-text">
                             10+ users built their Brain Smart !!!
                         </div>
                     </div>
                 </div>
 
-                {/* Right Section - Hero Image */}
-                <div className="w-1/2 flex justify-center h-[70vh]">
+                {/* Right Section - Hero Image (only for large screens) */}
+                <div className="hidden md:flex w-1/2 justify-center h-[70vh]">
                     <img
                         src={
                             theme.theme === "dark"
