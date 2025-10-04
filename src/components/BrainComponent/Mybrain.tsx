@@ -79,14 +79,13 @@ const MyBrain = () => {
 
     return (
         <div className="p-6 pt-14 w-full">
-            {/* Floating Actions */}
-            <div className="fixed top-24 right-10 flex gap-3 z-50">
+            <div className="fixed flex gap-3  transform  top-24 sm:flex-row sm:gap-2 sm:top-24 sm:left-1/2 sm:-translate-x-1/2 md:left-auto md:top-24 md:right-10 md:transform-none md:flex-row md:items-center">
                 <DialogModal
                     title="💬 Chat with My Brain"
                     trigger={
                         <Button
                             variant="primary"
-                            size="md"
+                            size="sm" // smaller on small screens
                             text="Open Brain Chat"
                             isFull={false}
                         />
@@ -100,7 +99,7 @@ const MyBrain = () => {
                     trigger={
                         <Button
                             variant="secondary"
-                            size="md"
+                            size="sm" // smaller on small screens
                             text="➕ Create Brain Item"
                             isFull={false}
                         />
@@ -111,7 +110,7 @@ const MyBrain = () => {
 
                 <Button
                     variant="secondary"
-                    size="md"
+                    size="sm" // smaller on small screens
                     text="Share Brain"
                     isFull={false}
                     onClickHandler={handleShareBrain}
@@ -123,10 +122,12 @@ const MyBrain = () => {
             {/* Brain Items Grid */}
             <div className="grid pt-12 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                 {brainItems.length === 0 && (
-                    <div className="h-[70vh] w-[96vw] flex items-center justify-center">
+                    <div className="h-[70vh] sm:w-[96vw] flex items-center justify-center">
                         <div className="flex flex-col justify-center items-center gap-4 text-center">
                             <CreateDoc />
-                            <div className="pl-10 text-xl font-[700] text-secondary-text">Please Create a Brain Item to see.</div>
+                            <div className="sm:pl-10 text-xl font-[700] text-secondary-text">
+                                Please Create a Brain Item to see.
+                            </div>
                         </div>
                     </div>
                 )}
