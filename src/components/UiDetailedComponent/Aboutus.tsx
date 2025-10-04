@@ -105,33 +105,7 @@ const About = () => {
                 </div>
             </div>
 
-            {/* Contributors */}
-            <div className="w-full flex gap-4 justify-center">
-                {contributors?.map((contributor) => (
-                    <a
-                        key={contributor.id}
-                        href={contributor.html_url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="w-[30%] p-4 rounded-xl border border-secondary-border bg-primary-bg flex flex-col items-center hover:shadow-md transition"
-                    >
-                        <img
-                            src={contributor.avatar_url}
-                            alt={contributor.login}
-                            className="w-16 h-16 rounded-full border border-primary-dot p-1 mb-2"
-                        />
-                        <p className="text-secondary-text font-medium">
-                            {contributor.login}
-                        </p>
-                        <p className="text-sm text-tertiary-text text-center">
-                            {contributor.bio ?? "Open Source Contributor"}
-                        </p>
-                    </a>
-                ))}
-            </div>
-
-            {/* CTA */}
-            <div className="w-full mt-8 flex justify-center gap-4">
+            <div className="w-full mb-8 flex justify-center gap-4">
                 <Button
                     variant="primary"
                     size="md"
@@ -149,6 +123,33 @@ const About = () => {
                     }
                 />
             </div>
+
+            {/* Contributors */}
+            <div className="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 justify-items-center">
+                {contributors?.map((contributor) => (
+                    <a
+                        key={contributor.id}
+                        href={contributor.html_url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="w-full sm:w-[90%] md:w-fit p-4 rounded-xl border border-secondary-border bg-primary-bg flex flex-col items-center hover:shadow-md transition"
+                    >
+                        <img
+                            src={contributor.avatar_url}
+                            alt={contributor.login}
+                            className="w-16 h-16 rounded-full border border-primary-dot p-1 mb-2"
+                        />
+                        <p className="text-secondary-text font-medium text-center">
+                            {contributor.login}
+                        </p>
+                        <p className="text-sm text-tertiary-text text-center">
+                            {contributor.bio ?? "Open Source Contributor"}
+                        </p>
+                    </a>
+                ))}
+            </div>
+
+            {/* CTA */}
         </div>
     );
 
@@ -157,7 +158,7 @@ const About = () => {
     }
 
     return (
-        <div className="w-full mt-[7%] flex justify-center">
+        <div className="w-full mt-[7%] flex justify-center py-3 sm:p-0">
             <div className="w-full max-w-6xl px-6">
                 {/* Page Header */}
                 <header className="w-full mb-12 text-center">
@@ -194,7 +195,7 @@ const About = () => {
                     </p>
                 </header>
 
-                <div className="w-full flex flex-col md:flex-row md:divide-x divide-secondary-border">
+                <div className="w-full flex flex-col md:flex-row md:divide-x divide-secondary-border gap-10 sm:gap-0">
                     {renderRepoSection(
                         "Frontend Repository",
                         frontendStats,

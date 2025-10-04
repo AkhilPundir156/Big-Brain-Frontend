@@ -140,7 +140,7 @@ const Signup = () => {
                 <div>
                     <Button
                         variant="primary"
-                        text="Sing Up"
+                        text="Sign Up"
                         size="lg"
                         isFull={true}
                         onClickHandler={submitForm}
