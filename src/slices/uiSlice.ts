@@ -9,6 +9,7 @@ interface UIState {
     userIconClicked: Boolean;
     showPassword: Boolean;
     isLoading: Boolean;
+    totalUsers: number;
 }
 
 const initialState: UIState = {
@@ -19,6 +20,7 @@ const initialState: UIState = {
     userIconClicked: false,
     showPassword: false,
     isLoading:false,
+    totalUsers: 0,
 };
 
 const uiSlice = createSlice({
@@ -45,9 +47,12 @@ const uiSlice = createSlice({
         },
         setIsLoading: (state, action: PayloadAction<Boolean>)=>{
             state.isLoading = action.payload
+        },
+        setTotalUsers: (state, action: PayloadAction<number>)=>{
+            state.totalUsers = action.payload
         }
     },
 });
 
-export const { setTheme, setIsLoading,setModal, setNotification, setNavbarItem, setUserIconClicked, setShowPassword } = uiSlice.actions;
+export const { setTheme, setIsLoading,setModal, setNotification, setNavbarItem, setUserIconClicked, setShowPassword, setTotalUsers } = uiSlice.actions;
 export default uiSlice.reducer;

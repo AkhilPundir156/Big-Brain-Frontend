@@ -8,6 +8,7 @@ import { setActiveItem } from "../../slices/contentSlice";
 import BrainService from "../../utils/brainService";
 
 import { Button } from "../../ui/ButtonElement";
+import ImgPreview from "../../ui/ImgPreview";
 import { InputElement } from "../../ui/InputElement";
 import Loader from "../../ui/Loader";
 
@@ -225,11 +226,7 @@ const BrainItem = () => {
                 {/* Right Column - File Preview & Description */}
                 <div className="w-full md:w-1/3 flex flex-col items-center gap-4">
                     {formData.type === "content" && formData.fileUrl ? (
-                        <img
-                            src={formData.fileUrl}
-                            alt="content"
-                            className="w-64 rounded-lg border border-secondary-border object-contain"
-                        />
+                        <ImgPreview images={formData.fileUrl} />
                     ) : (
                         <div className="w-64 h-40 rounded-lg border border-dashed border-secondary-border flex items-center justify-center text-tertiary-text">
                             No Preview

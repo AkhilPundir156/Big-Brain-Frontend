@@ -1,3 +1,5 @@
+import ImgPreview from "../../ui/ImgPreview";
+
 const BrianItemContent = ({ brainItem }: { brainItem: any }) => {
     return (
         <div className="w-full">
@@ -49,11 +51,7 @@ const BrianItemContent = ({ brainItem }: { brainItem: any }) => {
 
                 <div className="w-1/3 flex flex-col items-center gap-4">
                     {brainItem.type === "content" && brainItem.fileUrl ? (
-                        <img
-                            src={brainItem.fileUrl}
-                            alt="content"
-                            className="w-64 rounded-lg border border-secondary-border object-contain"
-                        />
+                        <ImgPreview images={brainItem.fileUrl} />
                     ) : (
                         <div className="w-64 h-40 rounded-lg border border-dashed border-secondary-border flex items-center justify-center text-tertiary-text">
                             No Preview

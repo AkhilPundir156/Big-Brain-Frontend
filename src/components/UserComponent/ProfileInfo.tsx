@@ -3,6 +3,7 @@ import { useRef } from "react";
 import ChangePasswordModal from "./ChangePasswordModal";
 
 import { Button } from "../../ui/ButtonElement";
+import ImgPreview from "../../ui/ImgPreview";
 import userService from "../../utils/userService";
 
 const ProfileInfo = ({
@@ -69,16 +70,14 @@ const ProfileInfo = ({
         >
             {/* Profile picture */}
             <div className="relative group">
-                <img
-                    src={
+                <ImgPreview images={
                         avatar ||
                         `https://ui-avatars.com/api/?name=${encodeURIComponent(
                             name
                         )}&background=random`
                     }
-                    alt="Avatar"
-                    className="h-48 sm:h-60 md:h-[18rem] w-48 sm:w-60 md:w-full object-cover border shadow-sm"
-                />
+                    classes="h-48 sm:h-60 md:h-[18rem] w-48 sm:w-60 md:w-full object-cover border shadow-sm"
+                     />
                 <button
                     onClick={() => fileInputRef.current?.click()}
                     className="absolute bottom-1 right-1 bg-accent-color text-white p-2 rounded-full opacity-0 group-hover:opacity-100 transition"

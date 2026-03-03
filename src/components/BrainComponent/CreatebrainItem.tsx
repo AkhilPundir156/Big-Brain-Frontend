@@ -18,7 +18,7 @@ const CreateBrainItem = () => {
 
     const dispatch= useDispatch();
 
-    const [type, setType] = useState("instagram");
+    const [type, setType] = useState("content");
     const [image, setImage] = useState<File | null>(null);
     const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -45,7 +45,7 @@ const CreateBrainItem = () => {
             titleRef.current!.value = "";
             descRef.current!.value = "";
             tagsRef.current!.value = "";
-            setType("instagram");
+            setType("content");
             setImage(null);
             dispatch(addContent(response.data));
         }
@@ -108,8 +108,8 @@ const CreateBrainItem = () => {
                     onChange={(e) => setType(e.target.value)}
                     className="bg-input-bg border border-primary-border text-secondary-text rounded-md px-2 py-2 focus:outline-none focus:border-secondary-text transition-all duration-200 w-full"
                 >
-                    <option value="instagram">Instagram</option>
-                    <option value="twitter">Twitter</option>
+                    {/* <option value="instagram">Instagram</option>
+                    <option value="twitter">Twitter</option> */}
                     <option value="content">Content</option>
                 </select>
             </div>

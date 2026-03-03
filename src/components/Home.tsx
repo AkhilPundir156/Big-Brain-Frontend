@@ -12,9 +12,11 @@ import ToolTip from "../ui/AnimatedTooltip";
 import HomeHeroImg from "../assets/img/HomeHero.png";
 import HomeHeroWhiteImg from "../assets/img/HomeHeroWhite.png";
 
+
 const Home = () => {
     const navigation = useNavigate();
     const theme = useSelector((state: RootState) => state.ui);
+    const totalUser = useSelector((state: RootState) => state.ui.totalUsers);
     const dispatch = useDispatch<AppDispatch>();
 
     const [showWarning, setShowWarning] = useState(true);
@@ -34,6 +36,7 @@ const Home = () => {
             return () => clearTimeout(timer);
         }
     }, [showWarning]);
+    
 
     return (
         <div className="w-full mt-[5.7%] flex flex-col relative">
@@ -121,7 +124,7 @@ const Home = () => {
                             <ToolTip items={people} />
                         </div>
                         <div className="pt-3 w-full text-center text-[1.1rem] md:text-[1.2rem] font-[500] text-secondary-text">
-                            10+ users built their Brain Smart !!!
+                            { totalUser }+ users built their Brain Smart !!!
                         </div>
                     </div>
                 </div>

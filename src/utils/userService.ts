@@ -3,6 +3,11 @@ import toast from "react-hot-toast";
 import ApiService from "./apiService";
 
 class userService {
+
+    static getTotalUsers() {
+        return ApiService.get<any>("/user/total");
+    }
+
     static getMyProfile() {
         return ApiService.get<any[]>("/user/me");
     }

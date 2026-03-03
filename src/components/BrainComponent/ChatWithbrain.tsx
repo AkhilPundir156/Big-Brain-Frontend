@@ -51,14 +51,13 @@ const ChatWithBrain = () => {
 
         const response = await BrainService.chatWithBrain({ query: userInput });
 
-        if (response.success) {
+        if (response?.success) {
             const brainReply = response.data.llmResponse || "🤖 ...";
             setMessages((prev) => [
                 ...prev,
                 { sender: "brain", text: brainReply },
             ]);
         }
-
         setIsThinking(false);
     };
 

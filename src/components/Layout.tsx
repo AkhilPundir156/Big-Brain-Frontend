@@ -6,7 +6,7 @@ import { useDispatch } from "react-redux";
 import userService from "../utils/userService";
 
 import { AppDispatch } from "../store";
-import { setTheme } from "../slices/uiSlice";
+import { setTheme, setTotalUsers } from "../slices/uiSlice";
 import { clearUser, setUser } from "../slices/userSlice";
 
 import { BrainIcon } from "../assets/icons/BrainIcon";
@@ -34,6 +34,7 @@ const Layout = () => {
 
     const checkSession = async () => {
         const response: any = await userService.getMyProfile();
+        const { totalUsers } = await userService.getTotalUsers();
         const user = response?.user;
         setCheckingSession(false);
 
@@ -52,7 +53,7 @@ const Layout = () => {
                 isAuthenticated: true,
             })
         );
-
+        dispatch(setTotalUsers(totalUsers));
         dispatch(setTheme(user.theme || "light"));
 
         if (user && location.pathname === "/login") {

@@ -46,17 +46,16 @@ const MyProfile = () => {
         fetchUser();
     }, []);
 
-    if (isLoading) {
+    if (isLoading || !user) {
         return <Loader />;
     }
-
     return (
         <>
             {/* Large screens (unchanged) */}
             <div className="mx-auto hidden sm:flex justify-between p-10 sm:p-20 pb-0 h-full gap-10">
                 <div className="hidden sm:flex flex-col gap-8 w-[40%] mx-auto p-10">
-                    <ProfileStats />
-                    <ProfileChart />
+                    <ProfileStats profileStats={user}/>
+                    <ProfileChart profileStats={user} />
                 </div>
 
                 {/* Right: Profile Info */}
